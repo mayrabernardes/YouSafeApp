@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
 
 
 const appDrawerNavigator = createDrawerNavigator({
-  'Roubo de celular': {
+  'Furto de celular': {
     screen:Mapa1
   },
-  'Roubo de carro': {
+  'Furto de carro': {
     screen:Mapa2
   },
 }, {
