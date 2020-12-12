@@ -9,3 +9,5 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+Map3.js
+Map4.js

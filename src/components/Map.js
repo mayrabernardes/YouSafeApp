@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  Linking
 } from 'react-native';
 import MapView from 'react-native-maps';
 import Modal from "react-native-modal";
@@ -14,6 +15,7 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { WebView } from 'react-native-webview';
 
 
 export default class Map extends Component {
@@ -33,7 +35,7 @@ export default class Map extends Component {
 
   componentDidMount() {
     // current ip network that are you use // 
-    axios.get('http://192.168.0.105:3000/latlonPhoneSteal')
+    axios.get('http://192.168.15.9:3000/latlonPhoneSteal')
       .then(res => {
         this.location = res.data;
       })
@@ -124,7 +126,7 @@ export default class Map extends Component {
               key={id}
               coordinate={marker.coordinates}
               title={marker.title}
-              image={require('../icon/icon_phone_rob.png')}
+              image={require('../icon/pin_azul.png')}
             />
           ))}
         </MapView>
@@ -135,8 +137,11 @@ export default class Map extends Component {
             type='font-awesome'
           />
           <Modal isVisible={this.state.isModalVisible}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.info}>No último mês foram relatados 20.999 furtos de carros</Text>
+            <View style={styles.showInfo }>
+              <WebView
+              source={{ uri: 'https://app.powerbi.com/view?r=eyJrIjoiZjE0ZThhOTktNDg2ZS00ZDUyLTg1MTgtNzU2NzljMzlhMTdiIiwidCI6ImUyNTRmNjUxLWIwNzktNDA3Mi1iODEwLWZmZDBlYWQ1N2M3MiJ9' }}
+              allowsBackForwardNavigationGestures={true}
+              />
               <Text style={styles.btnCloseModal}
                 onPress={this.toggleModal}
               >x</Text>
@@ -168,6 +173,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  showInfo: {
+    height: '80%',
   },
   mapStyle: {
     width: Dimensions.get('window').width,
@@ -222,8 +230,8 @@ const styles = StyleSheet.create({
   btnCloseModal: {
     position: 'absolute',
     right: 0,
-    fontSize:30,
-    color: "#ffffff"
+    fontSize: 40,
+    color: "#ff0000"
     // ver o botão de fechar
   },
   info: {

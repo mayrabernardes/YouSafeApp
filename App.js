@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { View} from 'native-base';
 import Map from './src/components/Map'
-import Map2 from './src/components/map2'
+import Map2 from './src/components/Map2'
 import { createSwitchNavigator, createAppContainer } from 'react-navigation'
 import { createDrawerNavigator } from 'react-navigation-drawer'; 
 

@@ -33,7 +33,7 @@ export default class Map2 extends Component {
 
   componentDidMount() {
     // current ip network that are you use // 
-    axios.get('http://192.168.0.105:3000/latlonCarSteal')
+    axios.get('http://192.168.15.9:3000/latlonCarSteal')
       .then(res => {
         this.location = res.data;
       })
@@ -123,7 +123,7 @@ export default class Map2 extends Component {
               key={id}
               coordinate={marker.coordinates}
               title={marker.title}
-              image={require('../icon/stolecarmin.png')}
+              image={require('../icon/pin_rosa.png')}
             />
           ))}
         </MapView>
