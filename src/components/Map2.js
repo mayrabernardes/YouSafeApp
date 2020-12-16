@@ -14,7 +14,7 @@ import Constants from 'expo-constants';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { WebView } from 'react-native-webview';
 
 export default class Map2 extends Component {
 
@@ -33,7 +33,7 @@ export default class Map2 extends Component {
 
   componentDidMount() {
     // current ip network that are you use // 
-    axios.get('http://192.168.15.9:3000/latlonCarSteal')
+    axios.get('http://192.168.15.102:3000/latlonCarSteal')
       .then(res => {
         this.location = res.data;
       })
@@ -134,8 +134,11 @@ export default class Map2 extends Component {
             type='font-awesome'
           />
           <Modal isVisible={this.state.isModalVisible}>
-            <View style={{ flex: 1 }}>
-              <Text style={styles.info}>No último mês foram relatados 20.999 furtos de carros</Text>
+            <View style={styles.showInfo }>
+              <WebView
+              source={{ uri: 'https://app.powerbi.com/view?r=eyJrIjoiZTEzNTU2YWYtMmI5Zi00OThmLWJiMjUtYTM1OGE0OTU5MDhkIiwidCI6ImUyNTRmNjUxLWIwNzktNDA3Mi1iODEwLWZmZDBlYWQ1N2M3MiJ9&pageName=ReportSection' }}
+              allowsBackForwardNavigationGestures={true}
+              />
               <Text style={styles.btnCloseModal}
                 onPress={this.toggleModal}
               >x</Text>
@@ -167,6 +170,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  showInfo: {
+    height: '80%',
   },
   mapStyle: {
     width: Dimensions.get('window').width,
@@ -221,8 +227,8 @@ const styles = StyleSheet.create({
   btnCloseModal: {
     position: 'absolute',
     right: 0,
-    fontSize:40,
-    color: "#ffffff"
+    fontSize: 40,
+    color: "#ff0000"
     // ver o botão de fechar
   },
   info: {

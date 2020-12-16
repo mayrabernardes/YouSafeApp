@@ -35,7 +35,7 @@ export default class Map extends Component {
 
   componentDidMount() {
     // current ip network that are you use // 
-    axios.get('http://192.168.15.9:3000/latlonPhoneSteal')
+    axios.get('http://192.168.15.102:3000/latlonPhoneSteal')
       .then(res => {
         this.location = res.data;
       })
@@ -139,7 +139,7 @@ export default class Map extends Component {
           <Modal isVisible={this.state.isModalVisible}>
             <View style={styles.showInfo }>
               <WebView
-              source={{ uri: 'https://app.powerbi.com/view?r=eyJrIjoiZjE0ZThhOTktNDg2ZS00ZDUyLTg1MTgtNzU2NzljMzlhMTdiIiwidCI6ImUyNTRmNjUxLWIwNzktNDA3Mi1iODEwLWZmZDBlYWQ1N2M3MiJ9' }}
+              source={{ uri: 'https://app.powerbi.com/view?r=eyJrIjoiZjgxMzFlZmItZTEyNy00YjZkLTgxM2ItNTE0MjQwNTA4ZDIzIiwidCI6ImUyNTRmNjUxLWIwNzktNDA3Mi1iODEwLWZmZDBlYWQ1N2M3MiJ9&pageName=ReportSection' }}
               allowsBackForwardNavigationGestures={true}
               />
               <Text style={styles.btnCloseModal}
